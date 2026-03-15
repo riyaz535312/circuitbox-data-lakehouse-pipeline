@@ -1,22 +1,9 @@
 # Databricks notebook source
-# MAGIC %md 
-# MAGIC ##### Creating gold order summary
-# MAGIC order_date
-# MAGIC
-# MAGIC total_orders
-# MAGIC
-# MAGIC total_revenue
-# MAGIC
-# MAGIC total_customers
-# MAGIC
-# MAGIC avg_order_value
 
-# COMMAND ----------
 
 import dlt
 from pyspark.sql.functions import *
 
-# COMMAND ----------
 
 @dlt.materialized_view(
     name="gold_sales_summary",
