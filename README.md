@@ -94,22 +94,32 @@ Analytical Tables <br>
 
 ## Repository Structure
 
-project-root/
+circuitbox-data-lakehouse-pipeline--root/
 
-dags/
-    s3_to_adls_pipeline.py
+code/
+    dags/
+          circuitBox_pipeline_PROD.py
+    scripts/
+          setup.sql
+          process Cutomer data.sql
+          process order data.sql
+          process address data.py
+          gold customer summary.sql
+          Gold sales summaer.py
 
-scripts/
-    copy_s3_to_adls.py
+   requirements.txt
 
-databricks/
-    dlt_pipeline.py
-
-docs/
-    dag_graph.png
-    architecture.png
-
-requirements.txt
+data/
+    addresses/
+          day1.csv
+          day2.csv
+    customers/
+          day1.json
+          day2.json
+    orders/
+          day1.json
+          day2.json
+    
 
 README.md
 
@@ -119,11 +129,7 @@ README.md
 
 check_s3_files<br>
 ⬇<br>
-validate_incremental_files<br>
-⬇<br>
 copy_s3_to_adls<br>
-⬇<br>
-archive_s3_files<br>
 ⬇<br>
 trigger_databricks_dlt<br>
 ⬇<br>
@@ -188,6 +194,7 @@ This table enables:
    * AWS S3 credentials
    * Azure Storage credentials
    * Databricks workspace
+   * smtp connection
 
 3. Place DAG inside the `dags` directory
 
@@ -195,18 +202,10 @@ This table enables:
 
 5. Monitor pipeline execution and logs
 
----
-
-## Future Improvements
-
-• Add data quality checks using Great Expectations
-• Implement CI/CD for Airflow DAG deployment
-• Add monitoring dashboards
-• Implement schema validation for incoming files
 
 ---
 
 ## Author
 
-Riyaz
+Riyaz Shaik
 Data Engineering Project
