@@ -11,22 +11,22 @@ The system automatically detects incremental files, archives processed files, tr
 
 ## Architecture Overview
 
-AWS S3
-⬇
-Apache Airflow (Orchestration & File Validation)
-⬇
-Azure Data Lake Storage Gen2
-⬇
-Azure Databricks Delta Live Tables
-⬇
-Medallion Architecture
-• Bronze Layer
-• Silver Layer
-• Gold Layer
-⬇
-Analytical Tables
-• Customer Summary
-• Order Summary
+AWS S3 <br>
+⬇ <br>
+Apache Airflow (Orchestration & File Validation) <br>
+⬇ <br>
+Azure Data Lake Storage Gen2 <br>
+⬇ <br>
+Azure Databricks Delta Live Tables <br>
+⬇ <br>
+Medallion Architecture <br>
+• Bronze Layer<br>
+• Silver Layer<br>
+• Gold Layer<br>
+⬇ <br>
+Analytical Tables <br>
+• Customer Summary<br>
+• Order Summary<br>
 
 ---
 
@@ -117,17 +117,17 @@ README.md
 
 ## Example Airflow DAG Workflow
 
-check_s3_files
-⬇
-validate_incremental_files
-⬇
-copy_s3_to_adls
-⬇
-archive_s3_files
-⬇
-trigger_databricks_dlt
-⬇
-email_notifications
+check_s3_files<br>
+⬇<br>
+validate_incremental_files<br>
+⬇<br>
+copy_s3_to_adls<br>
+⬇<br>
+archive_s3_files<br>
+⬇<br>
+trigger_databricks_dlt<br>
+⬇<br>
+email_notifications<br>
 
 ---
 
