@@ -1,23 +1,5 @@
 -- Databricks notebook source
--- MAGIC %md 
--- MAGIC ##### PROCESS ORDERS DATA
--- MAGIC
--- MAGIC 1. Ingest the data into the data lakehouse -- bronze_order
--- MAGIC
--- MAGIC 2. Perform data quality checks and transform the data as required -- Sliver_order_clean
--- MAGIC
--- MAGIC 3. Explode the items array from the orders object -- Sliver_orders
 
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ###### 1. read data to bronze table from ADLS as stream table 
--- MAGIC
--- MAGIC Add columns for 
--- MAGIC 1. input_file_path
--- MAGIC 2. ingestion_timestamp
-
--- COMMAND ----------
 
 CREATE OR REFRESH STREAMING TABLE bronze_orders
 COMMENT 'Raw data from files to data lakehouse'
@@ -44,26 +26,6 @@ FROM cloud_files(
 
 
 
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ###### 2. sliver_ordeer_clean table 
--- MAGIC By using LIVE bronze table which is created above we need to create a sliver table with data quality expectations and trnasformations like CASTING column to proper data type 
-
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ###### Data Quality check ( Expectations)
--- MAGIC 1. fail if customer_id is NULL
--- MAGIC 2. Fail if order_id is NULL
--- MAGIC 3. Warn if Order_status is not in pending, shipped, cancelled, completed
--- MAGIC 4. Warn if payment_method is not one of credit card, paypal, bank tranfer 
--- MAGIC
--- MAGIC ###### Transformations
--- MAGIC 1. CAST order_timestamp to TIMESTAMP
-
--- COMMAND ----------
-
 CREATE OR REFRESH STREAMING TABLE sliver_orders_clean(
   CONSTRAINT valid_customer_id EXPECT (customer_id IS NOT NULL) ON VIOLATION FAIL UPDATE,
   CONSTRAINT valid_order_id EXPECT (order_id IS NOT NULL) ON VIOLATION FAIL UPDATE,
@@ -78,14 +40,6 @@ order_status,payment_method,items
 FROM STREAM(LIVE.bronze_orders);
 
 
-
--- COMMAND ----------
-
--- MAGIC %md 
--- MAGIC ###### 3. Explode the array items in order data
--- MAGIC By using explode() we can explode the array items to seperate rows for each record
-
--- COMMAND ----------
 
 CREATE OR REFRESH STREAMING TABLE sliver_orders
 (
