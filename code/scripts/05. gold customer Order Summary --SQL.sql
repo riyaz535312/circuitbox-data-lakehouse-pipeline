@@ -1,28 +1,5 @@
 -- Databricks notebook source
--- MAGIC %md
--- MAGIC ##### Create customer Order Summary
--- MAGIC 1. Join the tables sliver_customer,Sliver_addresses,sliver_orders tables
--- MAGIC 2. Retrive the lastest address of the customer 
--- MAGIC 3. Calculate the follwoing values <br>
--- MAGIC Total_orders, <br>
--- MAGIC total_items_ordered,<br>
--- MAGIC total_order_amount
--- MAGIC
--- MAGIC ##### other aggregations Behavior Metrics
--- MAGIC total_orders
--- MAGIC
--- MAGIC total_spent
--- MAGIC
--- MAGIC avg_order_value
--- MAGIC
--- MAGIC first_order_date
--- MAGIC
--- MAGIC last_order_date
--- MAGIC
--- MAGIC customer_lifetime_days
--- MAGIC
 
--- COMMAND ----------
 
 CREATE OR REFRESH MATERIALIZED VIEW customer_order_summary
 AS
