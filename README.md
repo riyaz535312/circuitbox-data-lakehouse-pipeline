@@ -146,19 +146,36 @@ This pipeline enables:
 
 ## Sample Gold Tables
 
-### Customer Summary
+The Gold layer contains business-ready aggregated datasets used for analytics and reporting.
 
-| Customer ID | Total Orders | Total Spend |
-| ----------- | ------------ | ----------- |
+### Customer Summary (Gold)
 
-Provides a consolidated view of customer activity.
+Provides a consolidated view of each customer's lifetime activity including order behavior and revenue contribution.
 
-### Order Summary
+| customer_id | customer_name | date_of_birth | telephone     | email                                                   | address_line_1           | city           | state     | postcode | total_orders | total_items_ordered | total_order_amount | avg_order_value | first_order_date | last_order_date | customer_lifetime_days |
+| ----------- | ------------- | ------------- | ------------- | ------------------------------------------------------- | ------------------------ | -------------- | --------- | -------- | ------------ | ------------------- | ------------------ | --------------- | ---------------- | --------------- | ---------------------- |
+| 1002        | Carla Morton  | 2004-06-21    | +1 8616454195 | [carla.morton@yahoo.com](mailto:carla.morton@yahoo.com) | 084 Anne Hollow Apt. 064 | East Jasontown | Minnesota | 77329    | 1            | 3                   | 897                | 897             | 2024-10-13       | 2024-10-13      | 0                      |
 
-| Order Date | Total Orders | Revenue |
-| ---------- | ------------ | ------- |
+This table enables:
+• Customer lifetime value analysis
+• Customer segmentation
+• Purchase behavior insights
 
-Provides aggregated metrics for business analytics.
+---
+
+### Order Summary (Gold)
+
+Aggregated order-level metrics used for daily business reporting and performance tracking.
+
+| order_date | total_orders | total_revenue | total_customers | average_order_value |
+| ---------- | ------------ | ------------- | --------------- | ------------------- |
+| 2024-10-25 | 3            | 1697          | 2               | 565.66   |
+
+This table enables:
+• Daily revenue monitoring
+• Order volume tracking
+• Average order value analysis
+• Customer purchasing trends
 
 ---
 
